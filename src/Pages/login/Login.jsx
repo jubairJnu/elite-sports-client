@@ -1,10 +1,13 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import loginImg from '../../assets/login.jpg';
 import { useContext } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
+import Swal from 'sweetalert2';
 
 const Login = () => {
   const {logIn} = useContext(AuthContext);
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
 
   const handleLogin = event =>{
     event.preventDefault();
@@ -15,7 +18,14 @@ const Login = () => {
     logIn(email, password)
     .then(result =>{
       const loggedUser = result.user;
-      console.log(loggedUser);
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Login Successfully',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      navigate(from, { replace: true });
     })
     .catch(error=>{
       console.log(error);

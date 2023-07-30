@@ -11,6 +11,7 @@ const auth = getAuth(app);
 const AuthProvider = ({children}) => {
   const [user, setuser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [userRole, setUserRole] = useState('student')
 
   const SignUP = (email, password) =>{
     setLoading(true)
@@ -35,6 +36,12 @@ const AuthProvider = ({children}) => {
   useEffect(()=>{
     const unsubscribed = onAuthStateChanged(auth, currentUser=>{   
       setuser(currentUser)
+      if(currentUser){
+        setUserRole(currentUser.role || 'student')
+      }
+      else{
+        setUserRole('student')
+      }
       setLoading(false);    
    });
    return () => {
@@ -46,6 +53,7 @@ const AuthProvider = ({children}) => {
   const authInfo = {
     user,
     loading,
+    userRole,
     SignUP,
     logIn,
     logOut,

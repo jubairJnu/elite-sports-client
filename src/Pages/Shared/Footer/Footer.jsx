@@ -1,9 +1,18 @@
+
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // Import the AOS styles
 import logo from '../../../../public/logo.png'
+import { useEffect } from 'react';
 
 const Footer = () => {
+  useEffect(() => {
+    // Initialize AOS when the component mounts
+    AOS.init({ duration: 800 });
+  }, []);
   return (
-    <footer className="footer p-10 bg-base-200 text-base-content my-10">
-  <div>
+    <footer data-aos="fade-up"
+    data-aos-anchor-placement="bottom-bottom" className="footer p-10 bg-base-200 text-base-content my-10">
+  <div >
    <img className='w-28' src={logo} alt="" />
     <p>Elite Sport.<br/>Providing Sports Teaching</p>
   </div> 
