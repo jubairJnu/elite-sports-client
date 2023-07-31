@@ -3,6 +3,7 @@ import loginImg from '../../assets/login.jpg';
 import { useContext } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
 import Swal from 'sweetalert2';
+import GoogleLogin from '../SocialLogin/GoogleLogin';
 
 const SignUp = () => {
 const navigate = useNavigate();
@@ -25,7 +26,7 @@ const navigate = useNavigate();
       console.log(signedUser)
       updateUserProfile(name,photo)
       .then(()=>{
-        const savedUser = {name:name, email: email }
+        const savedUser = {name:name, email: email, role:"student" }
         fetch('http://localhost:5000/users',{
           method:'POST',
           headers:{
@@ -103,6 +104,7 @@ const navigate = useNavigate();
          </form>
          <p><small>Already Have An Account <Link to='/login'> Login</Link></small></p>
         </div>
+        <GoogleLogin></GoogleLogin>
       </div>
     </div>
   </div>
