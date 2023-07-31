@@ -26,7 +26,7 @@ const navigate = useNavigate();
       console.log(signedUser)
       updateUserProfile(name,photo)
       .then(()=>{
-        const savedUser = {name:name, email: email, role:"student" }
+        const savedUser = {image: photo, name:name, email: email, role:"student" }
         fetch('http://localhost:5000/users',{
           method:'POST',
           headers:{

@@ -6,12 +6,12 @@ import { AuthContext } from "../../Provider/AuthProvider";
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
 
-  const handleLogOut = () =>{
+  const handleLogOut = () => {
     logOut()
-    .then({})
-    .catch(error=>{
-      console.log(error);
-    })
+      .then({})
+      .catch(error => {
+        console.log(error);
+      })
   }
 
   return (
@@ -23,7 +23,7 @@ const Header = () => {
           </label>
           <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
             <li><Link to='/'>Home</Link></li>
-            <li><Link to='/'>Instructors</Link></li>
+            <li><Link to='/instructor'>Instructors</Link></li>
             <li><Link to='/classes'>classes</Link></li>
             <li><Link to='/'>Dashboard</Link></li>
           </ul>
@@ -33,7 +33,7 @@ const Header = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           <li><Link to='/'>Home</Link></li>
-          <li><Link to='/insdash'>Instructors</Link></li>
+          <li><Link to='/instructor'>Instructors</Link></li>
           <li><Link to='/classes'>classes</Link></li>
           <li><Link to='/dashboard'>Dashboard</Link></li>
 
@@ -52,7 +52,7 @@ const Header = () => {
 
               <button onClick={handleLogOut} className="btn btn-ghost">Log Out</button>
             </div> : <>
-            <Link className="btn btn-ghost" to ='/login'>Login</Link>
+              <Link className="btn btn-ghost" to='/login'>Login</Link>
             </>
           }
           {/* <label tabIndex={0} className="btn btn-ghost btn-circle avatar">

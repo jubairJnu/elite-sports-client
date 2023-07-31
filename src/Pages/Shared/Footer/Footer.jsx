@@ -11,7 +11,7 @@ const Footer = () => {
   }, []);
   return (
     <footer data-aos="fade-up"
-    data-aos-anchor-placement="bottom-bottom" className="footer p-10 bg-base-200 text-base-content my-10">
+    data-aos-anchor-placement="bottom-bottom" className="footer p-10 bg-black text-white my-10">
   <div >
    <img className='w-28' src={logo} alt="" />
     <p>Elite Sport.<br/>Providing Sports Teaching</p>

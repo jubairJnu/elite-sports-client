@@ -42,7 +42,10 @@ const Dashboard = () => {
           {currentUser && currentUser.role === "instructor" && <li><NavLink to='/dashboard/addclass'>Add Class</NavLink></li>}
 
           { currentUser && currentUser.role === 'student' &&
-            <li><NavLink to='/dashboard'>My Class</NavLink></li>}
+            <div>
+              <li><NavLink to='/dashboard'>My Selected Class</NavLink></li>
+              <li><NavLink to='/dashboard'>My Enrolled Class</NavLink></li>
+              </div>}
 
           {/* common */}
           <div className="divider"></div>
