@@ -2,16 +2,22 @@ import { FaTrashAlt } from 'react-icons/fa';
 import { useQuery } from 'react-query';
 import useAxiosSecure from '../../hooks/UseAxiosSecure';
 import Swal from 'sweetalert2';
+import { useState } from 'react';
 
 const AllUsers = () => {
 const [axiosSecure] = useAxiosSecure();
+const [isAdmin, setAdmin] = useState(false);
+const [isInstructor, setInstructor] = useState(false);
+const [isModified, setModified] = useState(false);
+
+
   const {data: users = [], refetch} = useQuery(['users'], async () => {
     const res = await axiosSecure.get('/users')
     // console.log(res.data)
     return res.data;
       },
       {
-        initialData: [], // Set initialData to an empty array
+        initialData: [],
       });
 
   const handleMakeAdmin= user =>{
@@ -21,6 +27,9 @@ const [axiosSecure] = useAxiosSecure();
       .then(res => res.json())
       .then(data => {
         if (data.modifiedCount) {
+          setAdmin(true)
+          setInstructor(false)
+          isModified(true);  //disabel button
           refetch();
           Swal.fire({
             title: `${user.name} is an admin now`,
@@ -42,6 +51,9 @@ const [axiosSecure] = useAxiosSecure();
       .then(res => res.json())
       .then(data => {
         if (data.modifiedCount) {
+          setAdmin(false) 
+          setInstructor(true)
+          setModified(true) //disable system
           refetch();
           Swal.fire({
             title: `${user.name} is an Instructor now`,
@@ -94,13 +106,13 @@ const [axiosSecure] = useAxiosSecure();
               <div>
               {
             user.role == 'admin' ? 'admin' :
-              <button onClick={() => handleMakeAdmin(user)} className="btn  btn-xs bg-orange-600 text-white">Make Admin</button>
+              <button disabled={isInstructor || isModified } onClick={() => handleMakeAdmin(user)} className="btn  btn-xs bg-orange-600 text-white">Make Admin</button>
           }
               </div>
               <div>
               {
             user.role == 'instructor' ? 'instructor' :
-              <button onClick={() => handleMakeInst(user)} className="btn  btn-xs bg-orange-600 text-white">Make Instructor</button>
+              <button disabled={isAdmin || isModified} onClick={() => handleMakeInst(user)} className="btn  btn-xs bg-orange-600 text-white">Make Instructor</button>
           }
               </div>
             </div>

@@ -61,10 +61,10 @@ const ManageClasses = () => {
                   {index + 1}
                 </th>
                 <td>
-                  {cls.name}
+                  {cls.className}
                 </td>
                 <td>
-                  {cls.email}
+                  {cls.InstEmail}
                 </td>
                 <td>
                   <div className="flex">

@@ -13,6 +13,8 @@ import PrivateRoutes from "../Pages/Provider/PrivateRoutes";
 import AllUsers from "../Pages/Dashboard/AllUsers";
 import ManageClasses from "../Pages/Dashboard/AdminDashboard/ManageClasses";
 import Instructor from "../Pages/Homes/Instructor/Instructor";
+import MySelecteds from "../Pages/Dashboard/Student/MySelecteds";
+import Payment from "../Pages/Dashboard/Student/Payment";
 
 const router = createBrowserRouter([
   {
@@ -58,6 +60,14 @@ const router = createBrowserRouter([
       {
         path:'addclass',
         element:<AddClass></AddClass>
+      },
+      {
+        path:'myselected',
+        element:<MySelecteds></MySelecteds>
+      },
+      {
+        path:'payment',
+        element:<Payment></Payment>
       }
     ]
   }

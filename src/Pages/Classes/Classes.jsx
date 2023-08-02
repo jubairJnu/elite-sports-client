@@ -11,12 +11,14 @@ const Classes = () => {
   },[])
 
   return (
-    <div>
-      {
+    <div >
+    <div className='grid md:grid-cols-3 gap-6 pt-20'>
+    {
         classes.map(clas => <Class
           key={clas._id}
           clas={clas}></Class>)
       }
+    </div>
     </div>
   );
 };
