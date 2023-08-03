@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { AuthContext } from '../../Provider/AuthProvider';
 import useAxiosSecure from '../../../hooks/UseAxiosSecure';
 import { useQuery } from 'react-query';
@@ -14,7 +14,7 @@ const MyClasses = () => {
   });
   return (
     <div>
-      
+      <h2>My Total Class</h2>
     </div>
   );
 };

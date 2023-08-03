@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import  { useContext } from 'react';
 import { AuthContext } from '../Pages/Provider/AuthProvider';
 import useAxiosSecure from './UseAxiosSecure';
 import { useQuery } from 'react-query';
