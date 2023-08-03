@@ -11,7 +11,7 @@ const PopularClass = () => {
   const [populars, setPopulars] = useState([]);
 
   useEffect(()=>{
-    fetch('http://localhost:5000/popular')
+    fetch('https://elite-sports-server.vercel.app/popular')
     .then(res => res.json())
     .then(data => setPopulars(data))
   },[])

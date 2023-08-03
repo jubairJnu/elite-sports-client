@@ -4,6 +4,7 @@ import { FaTrashAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const MySelecteds = () => {
   const { user } = useContext(AuthContext);
@@ -19,7 +20,34 @@ const MySelecteds = () => {
   const total = selecteds.reduce((sum, item) => sum + parseFloat(item.price), 0);
 
   const handleDelete = selected => {
-    console.log(selected);
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+
+        fetch(`https://elite-sports-server.vercel.app/carts/${selected._id}`,{
+          method:"DELETE"
+        })
+          .then(res => res.json())
+          .then(data => {
+            if (data.deletedCount > 0) {
+              refetch()
+              Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+              )
+            }
+          })
+
+      }
+    })
   }
 
 

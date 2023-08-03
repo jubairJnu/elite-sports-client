@@ -12,7 +12,7 @@ const ManageClasses = () => {
   });
 
   const handleApprove = cls => {
-    fetch(`http://localhost:5000/classApprove/admin/${cls._id}`,{
+    fetch(`https://elite-sports-server.vercel.app/classApprove/admin/${cls._id}`,{
       method: 'PATCH'
     })
       .then(res => res.json())

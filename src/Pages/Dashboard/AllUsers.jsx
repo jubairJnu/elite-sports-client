@@ -21,7 +21,7 @@ const [isModified, setModified] = useState(false);
       });
 
   const handleMakeAdmin= user =>{
-    fetch(`http://localhost:5000/users/admin/${user._id}`, {
+    fetch(`https://elite-sports-server.vercel.app/users/admin/${user._id}`, {
       method: 'PATCH'
     })
       .then(res => res.json())
@@ -45,7 +45,7 @@ const [isModified, setModified] = useState(false);
   }
 
   const handleMakeInst = user =>{
-    fetch(`http://localhost:5000/users/instructor/${user._id}`, {
+    fetch(`https://elite-sports-server.vercel.app/users/instructor/${user._id}`, {
       method: 'PATCH'
     })
       .then(res => res.json())
@@ -69,7 +69,34 @@ const [isModified, setModified] = useState(false);
   }
 
   const handleDelete = user =>{
-    console.log(user)
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+
+        fetch(`https://elite-sports-server.vercel.app/users/admin/${user._id}`,{
+          method:"DELETE"
+        })
+          .then(res => res.json())
+          .then(data => {
+            if (data.deletedCount > 0) {
+              refetch()
+              Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+              )
+            }
+          })
+
+      }
+    })
   }
 
   return (

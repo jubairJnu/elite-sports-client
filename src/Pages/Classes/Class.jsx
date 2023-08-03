@@ -13,7 +13,7 @@ const Class = ({clas}) => {
   console.log(clas);
 
   useEffect(() => {
-    fetch('http://localhost:5000/users')
+    fetch('https://elite-sports-server.vercel.app/users')
       .then(res => res.json())
       .then(data => {
         // console.log(data);
@@ -29,7 +29,7 @@ const Class = ({clas}) => {
     console.log(clas);
     if (user && user.email) {
       const cartItem = {classId:_id,className, image, price, email: user.email}
-      fetch('http://localhost:5000/carts',{
+      fetch('https://elite-sports-server.vercel.app/carts',{
         method:'POST',
         headers:{
           'content-type': 'application/json'

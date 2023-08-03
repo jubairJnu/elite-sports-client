@@ -14,11 +14,13 @@ const CheckoutForm = ({cart, price}) => {
 
   useEffect(()=>{
     // fetch url payment
+   if(price>0){
     axiosSecure.post('/create-payment-intent', {price})
     .then(res =>{
       console.log(res.data.clientSecret)
       setClientSecret(res.data.clientSecret)
     })
+   }
 
   },[])
 
@@ -79,14 +81,19 @@ const CheckoutForm = ({cart, price}) => {
         const paymentInfo ={
           email: user?.email,
           transjectionId: paymentIntent.id,
+          data: new Date(),
           price,
           quantity: cart.length,
           items: cart.map(item=> item._id),
+          ClassItem: cart.map(item => item.classId),
           itemName: cart.map(item=> item.name)
         }
         axiosSecure.post('/payment', paymentInfo)
         .then(res=>{
           console.log(res.data);
+          if(res.data.result.deletedResult){
+            // 
+          }
 
         })
       }

@@ -14,7 +14,7 @@ const GoogleLogin = () => {
       const signedUser = result.user;
       console.log(signedUser);
       const savedUser = {image:signedUser.PhotoURL, name:signedUser.displayName, email: signedUser.email, role:"student" }
-      fetch('http://localhost:5000/users',{
+      fetch('https://elite-sports-server.vercel.app/users',{
           method:'POST',
           headers:{
             'content-type': 'application/json'

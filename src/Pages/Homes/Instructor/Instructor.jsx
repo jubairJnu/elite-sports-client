@@ -4,7 +4,7 @@ import InstCard from './InstCard';
 const Instructor = () => {
   const [instructors, setInstructors] = useState();
   useEffect(()=>{
-    fetch('http://localhost:5000/user/instructor')
+    fetch('https://elite-sports-server.vercel.app/user/instructor')
     .then(res => res.json())
     .then(data => setInstructors(data))
   },[])

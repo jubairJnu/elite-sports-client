@@ -23,7 +23,7 @@ const AddClass = () => {
           const { className, InstName, InstEmail, seats,price } = data;
           const newClass = {className, InstName, InstEmail, seats, price: parseFloat(price), Status: "pending", image: imgURL }
           
-          fetch('http://localhost:5000/class', {
+          fetch('https://elite-sports-server.vercel.app/class', {
             method: 'POST',
             headers: {
               'content-type': 'application/json'
