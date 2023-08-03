@@ -39,13 +39,17 @@ const Dashboard = () => {
               <li><NavLink to='/dashboard/alluser'>Manage Users</NavLink></li>
             </div>
           }
-          {currentUser && currentUser.role === "instructor" && <li><NavLink to='/dashboard/addclass'>Add Class</NavLink></li>}
+          {currentUser && currentUser.role === "instructor" &&
+            <div>
+              <li><NavLink to='/dashboard/addclass'>Add Class</NavLink></li>
+              <li><NavLink to='/dashboard/myclasses'>My Classes</NavLink></li>
+            </div>}
 
-          { currentUser && currentUser.role === 'student' &&
+          {currentUser && currentUser.role === 'student' &&
             <div>
               <li><NavLink to='/dashboard/myselected'>My Selected Class</NavLink></li>
               <li><NavLink to='/dashboard/enrolled'>My Enrolled Class</NavLink></li>
-              </div>}
+            </div>}
 
           {/* common */}
           <div className="divider"></div>
